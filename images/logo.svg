@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 250">
+  <style>
+    .logo-text {
+      font-family: 'Impact', sans-serif;
+      font-size: 72px;
+      font-weight: normal; /* Inte fet för DAGENS */
+      fill: #000; /* Svart text */
+      text-transform: uppercase;
+    }
+    .trump-text {
+      font-family: 'Impact', sans-serif;
+      font-size: 72px;
+      font-weight: bold;
+      fill: #cf2e2e;
+      font-style: italic;
+      letter-spacing: 2px;
+    }
+    .hair {
+      fill: #fed200;
+      stroke: #d4b000;
+      stroke-width: 2;
+      animation: waveHair 4s ease-in-out infinite;
+    }
+    
+    @keyframes waveHair {
+      0%, 100% { 
+        d: path("M25,60 Q85,-20 145,40 Q205,0 265,50 Q325,10 385,70 Q445,30 505,90 L505,130 Q445,90 385,110 Q325,70 265,100 Q205,60 145,90 Q85,50 25,100 Z");
+      }
+      25% { 
+        d: path("M25,55 Q85,-25 145,35 Q205,-5 265,45 Q325,5 385,65 Q445,25 505,85 L505,135 Q445,95 385,115 Q325,75 265,105 Q205,65 145,95 Q85,55 25,105 Z");
+      }
+      50% { 
+        d: path("M25,65 Q85,-15 145,45 Q205,5 265,55 Q325,15 385,75 Q445,35 505,95 L505,125 Q445,85 385,105 Q325,65 265,95 Q205,55 145,85 Q85,45 25,95 Z");
+      }
+      75% { 
+        d: path("M25,55 Q85,-25 145,35 Q205,-5 265,45 Q325,5 385,65 Q445,25 505,85 L505,135 Q445,95 385,115 Q325,75 265,105 Q205,65 145,95 Q85,55 25,105 Z");
+      }
+    }
+  </style>
+  <path class="hair" d="M25,60 Q85,-20 145,40 Q205,0 265,50 Q325,10 385,70 Q445,30 505,90 L505,130 Q445,90 385,110 Q325,70 265,100 Q205,60 145,90 Q85,50 25,100 Z"/>
+  <text x="20" y="180" class="logo-text">DAGENS</text>
+  <text x="240" y="180" class="trump-text">TRUMP</text>
+</svg>
