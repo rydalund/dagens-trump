@@ -1,28 +1,49 @@
+/* Grundläggande inställningar */
+html {
+  height: 100%;
+}
+
 body {
   font-family: 'Roboto Mono', monospace;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
+}
+
+/* Bakgrundsbild med overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-image: url('../images/flag.png');
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  z-index: -1;
 }
 
+/* Huvudinnehåll som växer för att pusha ner footern */
 .content-wrapper {
-  background-color: rgba(255,255,255,0.95);
+  flex: 1 0 auto;
+  background-color: rgb(190, 190, 190);
   max-width: 1400px;
-  margin: 0 auto;
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  width: 100%;
+  margin: 0 auto !important;
+  padding: 2em;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Header-stilar */
 header.bg-dark {
   background-color: rgba(10, 49, 97, 1) !important;
   color: white;
   padding: 1rem 0;
-}
-
-header .h4 {
-  font-size: 1.5rem;
-  margin: 0;
 }
 
 .header-title {
@@ -31,9 +52,10 @@ header .h4 {
   color: #ffd700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
+/* Navigationsmeny */
 nav.navbar-light {
   background-color: rgba(179, 25, 66, 1) !important;
 }
@@ -43,10 +65,8 @@ nav.navbar-light {
   justify-content: space-between;
 }
 
-.hero {
-  background-color: #003366;
-  color: white;
-  padding: 3rem 0;
+/* Hero-sektion */
+.hero-section {
   text-align: center;
 }
 
@@ -70,22 +90,12 @@ nav.navbar-light {
   display: block;
 }
 
+/* Karusell */
 .carousel-item img {
   border-radius: 10px;
 }
 
-.card {
-  transition: transform 0.2s, box-shadow 0.2s;
-  margin-bottom: 1.5rem;
-  border: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
+/* Nyhetssektion */
 #svt-news, #google-news, #reuters-news {
   min-height: 200px;
 }
@@ -93,15 +103,17 @@ nav.navbar-light {
 .news-list p {
   margin-bottom: 0.75rem;
 }
+
 .news-list a {
   text-decoration: none;
   color: #003366;
 }
+
 .news-list a:hover {
   text-decoration: underline;
 }
 
-/* ASIDE feed layout */
+/* Sidebar (Truth-feed) */
 .truth-feed {
   background: #f5f5f5;
   padding: 1.5rem;
@@ -122,7 +134,7 @@ nav.navbar-light {
   border-radius: 12px;
   padding: 1rem;
   margin-bottom: 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .post-header {
@@ -160,11 +172,14 @@ nav.navbar-light {
   line-height: 1.4;
 }
 
-
+/* Footer - nu med fast positionering längst ner */
 footer.bg-dark {
+  background-color: rgba(10, 49, 97, 1);
   color: white;
   padding: 2rem 0;
   text-align: center;
+  flex-shrink: 0;
+  width: 100%;
 }
 
 footer a {
@@ -178,13 +193,10 @@ footer a:hover {
   color: #ffd700;
 }
 
+/* Responsiva anpassningar */
 @media (min-width: 768px) {
   .header-title {
     font-size: 2.5rem;
-  }
-
-  .hero {
-    padding: 4rem 0;
   }
 
   .welcome-text {
@@ -205,14 +217,6 @@ footer a:hover {
 }
 
 @media (min-width: 992px) {
-  header .h4 {
-    font-size: 2.5rem;
-  }
-
-  .hero {
-    padding: 6rem 0;
-  }
-
   .welcome-text {
     font-size: 2.5rem;
   }
