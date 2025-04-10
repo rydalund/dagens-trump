@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/rydalund/dagens-trump#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "puppeteer": "^24.6.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
