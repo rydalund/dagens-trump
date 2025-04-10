@@ -55,6 +55,13 @@ header.bg-dark {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
+
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /* Navigationsmeny */
 nav.navbar-light {
   background-color: rgba(179, 25, 66, 1) !important;
@@ -63,6 +70,15 @@ nav.navbar-light {
 .navbar-nav {
   width: 100%;
   justify-content: space-between;
+}
+
+/* Kanske ändra*/
+#current-date {
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  margin-left: auto;
+  padding-right: 0.5rem; /* eller mer om det behövs */
 }
 
 /* Hero-sektion */
