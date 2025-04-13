@@ -1,33 +1,33 @@
-# Node.js - Ignore the 'node_modules' directory that contains all installed dependencies
+# Node.js
 node_modules/
 
-# npm & Yarn logs - Ignore log files created during npm or Yarn operations (e.g., if there are errors during install)
+# npm & Yarn logs
 npm-debug.log*
 yarn-debug.log*
 
-# Environment variables - Ignore '.env' file which may contain sensitive information (e.g., API keys or database credentials)
+# Environment variables
 .env
 
-# Log files - Ignore log files that may be generated during app runtime (e.g., server logs)
+# Log files
 *.log
 
-# Build directories - Ignore directories where compiled or bundled files are stored (e.g., Webpack, Babel, or TypeScript outputs)
+# Build directories 
 dist/
 build/
 
-# TypeScript build info - Ignore files related to TypeScript build info
+# TypeScript build info
 *.tsbuildinfo
 
-# Babel configuration - Ignore Babel config files if you're using Babel for JS transpiling
+# Babel configuration
 .babelrc
 
-# IDE-specific files - Ignore configuration files created by IDEs (e.g., VSCode or IntelliJ)
+# IDE-specific files
 .vscode/
 .idea/
 
-# Operating system-specific files - Ignore files automatically created by the OS (e.g., macOS and Windows system files)
+# Operating system-specific files
 .DS_Store
 Thumbs.db
 
-# Additional log files - Ignore npm debug logs and other logs that are generated when npm fails
+# Additional log files
 npm-debug.log*
