@@ -1,5 +1,6 @@
 .truth-feed {
   background-color: #f5f5f5;
+  margin-top: 0.5em;
   border-radius: 10px;
   padding: 2rem 1.5rem;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -14,27 +15,38 @@
     margin-bottom: 1rem;
     color: #333;
   }
+
+  .truth-post-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
   
   .truth-post {
-    background-color: white;
-    border-radius: 10px;
+    background: #fff;
     padding: 1rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .truth-post:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
   
   .truth-header {
     display: flex;
+    gap: 0.75rem;
     align-items: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
   }
   
-  .truth-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 0.75rem;
-  }
+.truth-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
   
   .truth-handle {
     font-size: 0.85rem;

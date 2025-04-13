@@ -47,34 +47,39 @@ function setupScrollButtons(containerId, prevBtn, nextBtn) {
 const instaContainer = document.getElementById("instagramContainer");
 const instagramData = [
   {
-    img: "images/instagram1.jpg",
-    user: "@realtrump",
-    tags: "#trump #politics",
-    likes: "12,4k likes",
+    img: "images/instagram1.jpeg",
+    user: "@larryeldershow",
+    tags: "#trump",
+    likes: "90,4k likes",
+    link: "https://www.instagram.com/p/DBaHh0QNC4O/"
   },
   {
-    img: "images/instagram2.jpg",
-    user: "@usa_today",
-    tags: "#breaking #trump",
-    likes: "8,2k likes",
+    img: "images/instagram2.jpeg",
+    user: "@uplifesociety",
+    tags: "#DonaldTrump #2024Election ",
+    likes: "41,5k likes",
+    link: "https://www.instagram.com/p/DCCbY4uIDC-/"
   },
   {
-    img: "images/instagram2.jpg",
-    user: "@usa_today",
-    tags: "#breaking #trump",
-    likes: "8,2k likes",
+    img: "images/instagram3.jpeg",
+    user: "@faranak_amid",
+    tags: "#faranak_amid",
+    likes: "183 likes",
+    link: "https://www.instagram.com/p/DCCNTchIeW3/"
   },
   {
-    img: "images/instagram2.jpg",
-    user: "@usa_today",
-    tags: "#breaking #trump",
-    likes: "8,2k likes",
+    img: "images/instagram4.jpeg",
+    user: "@skynews",
+    tags: "#BoycottTrump #BoycottUS",
+    likes: "98,2k likes",
+    link: "https://www.instagram.com/p/DHGCBZ_t01E/" 
   },
   {
-    img: "images/instagram2.jpg",
+    img: "images/instagram5.jpeg",
     user: "@usa_today",
-    tags: "#breaking #trump",
-    likes: "8,2k likes",
+    tags: "#NarendraModi #Trump",
+    likes: "2,2k likes",
+    link: "https://www.instagram.com/p/DCBaXfhpTX8/"
   }
 ];
 
@@ -82,7 +87,9 @@ instagramData.forEach(post => {
   const card = document.createElement("div");
   card.className = "social-card";
   card.innerHTML = `
-    <img src="${post.img}" alt="Instagram-bild" class="img-fluid">
+    <a href="${post.link}" target="_blank" rel="noopener noreferrer">
+      <img src="${post.img}" alt="Instagram-bild" class="img-fluid">
+    </a>
     <div class="social-card-body">
       <p class="post-username">${post.user}</p>
       <p class="post-tags">${post.tags}</p>
@@ -96,34 +103,25 @@ instagramData.forEach(post => {
 const youtubeContainer = document.getElementById("youtubeContainer");
 const youtubeData = [
   {
-    img: "images/youtube1.jpg",
-    title: "Trump's Latest Speech",
-    channel: "Trump Official",
-    views: "1,2M views",
+    videoId: "VEle3pZRqmI",
+    title: "Trump Tariff Cold Open",
   },
   {
-    img: "images/youtube2.jpg",
-    title: "Breaking News: Trump 2024",
-    channel: "News Channel",
-    views: "890k views",
+    videoId: "AQkFvb0kNOw",
+    title: "Donald Trump taking the ‘war on woke’",
+
   },
   {
-    img: "images/youtube3.jpg",
-    title: "Trump's Debate Highlights",
-    channel: "Debate Highlights",
-    views: "650k views",
+    videoId: "NHowYAm4p0g",
+    title: "Trump want's to buy the house in Prince Of Bel-Air",
   },
   {
-    img: "images/youtube4.jpg",
-    title: "Trump Visits Congress",
-    channel: "Political News",
-    views: "320k views",
+    videoId: "LJ6nOmAiwqo",
+    title: "Trump's Meanest 'The Apprentice' Moments",
   },
   {
-    img: "images/youtube5.jpg",
-    title: "Trump's Social Media Strategy",
-    channel: "Tech Channel",
-    views: "430k views",
+    videoId: "jkghtyxZ6rc",
+    title: "Trump Take Down WWE's Vince McMahon",
   }
 ];
 
@@ -131,11 +129,11 @@ youtubeData.forEach(post => {
   const card = document.createElement("div");
   card.className = "social-card";
   card.innerHTML = `
-    <img src="${post.img}" alt="YouTube-bild" class="img-fluid">
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/${post.videoId}" allowfullscreen></iframe>
+    </div>
     <div class="social-card-body">
       <p class="post-title">${post.title}</p>
-      <p class="post-channel">${post.channel}</p>
-      <p class="post-views">${post.views}</p>
     </div>
   `;
   youtubeContainer.appendChild(card);

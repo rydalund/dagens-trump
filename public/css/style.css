@@ -112,6 +112,9 @@ nav.navbar-light {
   min-height: 200px;
 }
 
+.news-list {
+  margin-bottom: 3em;
+}
 .news-list p {
   margin-bottom: 0.75rem;
 }
