@@ -5,7 +5,9 @@ import {
   setupScrollButtons
 } from './feed.js';
 import { initFakeNewsForm } from './fakeNews.js';
+import { createRssBbc } from './rss.js';
 
+createRssBbc();
 displayCurrentDate();
 initInstagramFeed();
 initYoutubeFeed();
