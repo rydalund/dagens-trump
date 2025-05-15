@@ -5,9 +5,10 @@ import {
   setupScrollButtons
 } from './feed.js';
 import { initFakeNewsForm } from './fakeNews.js';
-import { createRssBbc } from './rss.js';
+import { createRssBbc, createRssSverigesRadio } from './rss.js';
 
 createRssBbc();
+createRssSverigesRadio()
 displayCurrentDate();
 initInstagramFeed();
 initYoutubeFeed();
