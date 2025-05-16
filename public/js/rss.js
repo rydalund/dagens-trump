@@ -1,28 +1,26 @@
 export function fetchAndDisplayRss(rssUrl, containerId, keyword) {
-  const proxy = "https://api.allorigins.win/raw?url=" + encodeURIComponent(rssUrl);
+  const proxyUrl =
+    "https://api.allorigins.win/raw?url=" + encodeURIComponent(rssUrl);
 
-  fetch(proxy)
+  fetch(proxyUrl)
     .then((response) => response.text())
-    .then((str) => {
+    .then((data) => {
       const parser = new DOMParser();
-      const xml = parser.parseFromString(str, "application/xml");
+      const xml = parser.parseFromString(data, "application/xml");
 
       const container = document.getElementById(containerId);
-      if (!container) {
-        console.error(`Elementet med id "${containerId}" hittades inte.`);
-        return;
-      }
+      if (!container) return;
 
       container.innerHTML = "";
+
       const items = xml.querySelectorAll("item");
       let count = 0;
 
-      for (let i = 0; i < items.length && count < 100; i++) {
+      for (let i = 0; i < items.length; i++) {
         const item = items[i];
-        const title = item.querySelector("title")?.textContent ?? "";
-        const description =
-          item.querySelector("description")?.textContent ?? "";
-        const link = item.querySelector("link")?.textContent ?? "";
+        const title = item.querySelector("title").textContent;
+        const description = item.querySelector("description").textContent;
+        const link = item.querySelector("link").textContent;
 
         if (
           title.toLowerCase().includes(keyword.toLowerCase()) ||
@@ -33,73 +31,22 @@ export function fetchAndDisplayRss(rssUrl, containerId, keyword) {
           a.href = link;
           a.target = "_blank";
           a.textContent = title;
+
           p.appendChild(a);
           container.appendChild(p);
+
           count++;
+          if (count >= 10) break;
         }
       }
 
       if (count === 0) {
-        const noNews = document.createElement("p");
-        noNews.textContent = `Inga ${keyword}-relaterade nyheter hittades just nu.`;
-        container.appendChild(noNews);
+        const p = document.createElement("p");
+        p.textContent = "Inga " + keyword + "-nyheter hittades.";
+        container.appendChild(p);
       }
     })
     .catch((error) => {
       console.error("Error fetching RSS feed:", error);
     });
 }
-
-
-/*export function createRssBbc() {
-    const rssUrl = 'https://feeds.bbci.co.uk/news/world/rss.xml';
-    const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(rssUrl); //proxyserver som tillåter CORS
-
-    fetch(proxyUrl)
-        .then(response => response.text())
-        .then(str => {
-            const parser = new DOMParser();
-            const xml = parser.parseFromString(str, "application/xml");
-
-            const container = document.getElementById('bbc-news');
-            if (!container) {
-                console.warn('Elementet med id "bbc-news" hittades inte.');
-                return;
-            }
-
-            const items = xml.querySelectorAll("item");
-            let count = 0;
-
-            items.forEach(item => {
-                const title = item.querySelector("title").textContent;
-                const description = item.querySelector("description").textContent;
-                const link = item.querySelector("link").textContent;
-
-                if (
-                    title.toLowerCase().includes("donald trump") ||
-                    description.toLowerCase().includes("donald trump")
-                ) {
-                    const p = document.createElement("p");
-                    const a = document.createElement("a");
-                    a.href = link;
-                    a.target = "_blank";
-                    a.textContent = title;
-                    p.appendChild(a);
-                    container.appendChild(p);
-
-                    count++;
-                    if (count >= 10) return;
-                }
-            });
-
-            if (count === 0) {
-                const noNews = document.createElement("p");
-                noNews.textContent = "Inga Trump-relaterade nyheter hittades just nu.";
-                container.appendChild(noNews);
-            }
-        })
-        .catch(error => {
-            console.error("Fel vid hämtning av RSS:", error);
-        });
-}
-*/

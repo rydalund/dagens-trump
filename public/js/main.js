@@ -7,8 +7,9 @@ import {
 import { initFakeNewsForm } from './fakeNews.js';
 import { fetchAndDisplayRss } from './rss.js';
 
-//", , "https://rss.nytimes.com/services/xml/rss/nyt/World.xml", "nyt-news, https://feeds.bbci.co.uk/news/world/rss.xml
-fetchAndDisplayRss("https://www.dn.se/rss/", 'bbc-news', 'trump');
+fetchAndDisplayRss("https://www.aljazeera.com/xml/rss/all.xml", 'al-jazeera-news', 'trump');
+fetchAndDisplayRss("https://feeds.bbci.co.uk/news/world/rss.xml/", 'bbc-news', 'trump');
+fetchAndDisplayRss("https://rss.nytimes.com/services/xml/rss/nyt/World.xml", 'nyt-news', 'trump');
 displayCurrentDate();
 initInstagramFeed();
 initYoutubeFeed();
