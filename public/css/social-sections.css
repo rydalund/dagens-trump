@@ -49,7 +49,6 @@
   transform: translateY(-5px);
 }
 
-/* Card content */
 .social-card-body {
   padding: 0.75rem 1rem;
 }
@@ -66,13 +65,13 @@
   margin: 0;
 }
 
-/* Instagram-specific: square images */
+/* Instagram design */
 .instagram-feed .social-card {
   padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: stretch;
 }
 
 .instagram-feed .social-card img {
@@ -86,6 +85,7 @@
 .instagram-feed .social-card-body {
   padding: 0.5rem 0.75rem;
   width: 100%;
+  flex-grow: 1;
 }
 
 .instagram-feed .post-username {
@@ -97,6 +97,30 @@
 .instagram-feed .post-tags {
   font-size: 0.75rem;
   color: #6c757d;
+}
+
+/* Social card footer  */
+.social-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  border-top: 1px solid #f0f0f0;
+  font-size: 1.2rem;
+  color: #6c757d;
+}
+
+.social-card-footer i {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.social-card-footer i:hover {
+  color: #000;
+}
+
+.bi-heart-fill {
+  color: red;
 }
 
 /* Responsive YouTube container */
@@ -116,7 +140,7 @@
   border: none;
 }
 
-/* Scroll-buttons */
+/* Scroll-btn */
 .social-nav {
   position: absolute;
   top: 50%;
@@ -144,7 +168,7 @@
   pointer-events: none;
 }
 
-/* Scroll-button positioning */
+/* Scroll-btn positioning */
 .instagram-prev,
 .youtube-prev {
   left: -20px;
@@ -155,7 +179,7 @@
   right: -20px;
 }
 
-/* Responsive card width */
+/* Responsive*/
 @media (min-width: 576px) {
   .social-card {
     flex: 0 0 60%;

@@ -63,14 +63,15 @@ export function renderInstagramList() {
     const card = document.createElement("div");
     card.className = "social-card";
 
+    // Image
     const image = new Image();
     image.src = post.imageUrl;
     image.alt = post.title;
     image.title = post.title;
     image.classList.add("img-fluid");
+    card.appendChild(image);
 
-    card.prepend(image);
-
+    // Content
     const body = document.createElement("div");
     body.className = "social-card-body";
     body.innerHTML = `
@@ -80,19 +81,23 @@ export function renderInstagramList() {
     `;
     card.appendChild(body);
 
-    // Favorite icon / heart
+    // Footer with icons for like, delete
+    const footer = document.createElement("div");
+    footer.className = "social-card-footer";
+
+    const trash = document.createElement("i");
+    trash.className = "bi bi-trash";
+    trash.style.cursor = "pointer";
+    trash.addEventListener("click", () => deletePost(index));
+
     const heart = document.createElement("i");
     heart.className = post.favorited ? "bi bi-heart-fill" : "bi bi-heart";
     heart.style.cursor = "pointer";
     heart.addEventListener("click", () => toggleFavorite(index));
-    card.appendChild(heart);
 
-    // Trash can for delete
-    const trash = document.createElement("i");
-    trash.className = "bi bi-trash ms-2";
-    trash.style.cursor = "pointer";
-    trash.addEventListener("click", () => deletePost(index));
-    card.appendChild(trash);
+    footer.appendChild(trash);
+    footer.appendChild(heart);
+    card.appendChild(footer);
 
     container.prepend(card);
   });

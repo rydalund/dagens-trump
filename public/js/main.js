@@ -1,5 +1,5 @@
 import { displayCurrentDate, setupScrollButtons } from './dom.js';
-import { initYoutubeFeed } from './feed.js';
+import { initYoutubeFeed, initTruthFeed} from './feed.js';
 import { initFakeNewsForm } from './instagram.js';
 import { fetchAndDisplayRss } from './rss.js';
 import { initLocalStorage, renderInstagramList } from './localStorage.js';
@@ -10,7 +10,8 @@ fetchAndDisplayRss("https://www.washingtontimes.com/rss/headlines/news", 'nyt-ne
 displayCurrentDate();
 initLocalStorage();
 renderInstagramList()
-initYoutubeFeed();
+initYoutubeFeed(); //Will later be real feed
+initTruthFeed(); //Will later be real feed
 setupScrollButtons("instagramContainer", document.querySelector(".instagram-prev"), document.querySelector(".instagram-next"));
 setupScrollButtons("youtubeContainer", document.querySelector(".youtube-prev"), document.querySelector(".youtube-next"));
 
