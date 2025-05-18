@@ -1,15 +1,17 @@
 import { instagramData } from "./feed.js"; //Basic Instagram-posts (will later be real posts)
 import { showToast } from "./dom.js";
 
+let currentCommentIndex = null; //For keeping track of comments
+
+// Checks localStorage, if the list does not exist, it will be init
 export function initLocalStorage() {
-  // Checks ocalStorage
   const instagramList = localStorage.getItem("instagramList");
 
   if (!instagramList) {
-    // If the list does not exist, it will be init
     initBasicInstagramList();
   } else {
-    // Chesck if the list is empty (as of you delete every post), and then removes it and replaces with new
+
+    // Check if the list is empty (as of you delete every post), and then removes it and replaces with new
     const parsedList = JSON.parse(instagramList);
     if (parsedList.length === 0) {
       localStorage.removeItem("instagramList");
@@ -53,6 +55,7 @@ export function toggleFavorite(index) {
   renderInstagramList();
 }
 
+//Main method for rendering Instagram posts
 export function renderInstagramList() {
   const container = document.getElementById("instagramContainer");
   container.innerHTML = "";
@@ -81,24 +84,70 @@ export function renderInstagramList() {
     `;
     card.appendChild(body);
 
-    // Footer with icons for like, delete
+    // Comments
+    if (post.comment) {
+      const commentPara = document.createElement("p");
+      commentPara.className = "comment-text text-muted small fst-italic mb-2";
+      commentPara.textContent = `"${post.comment}"`;
+      card.appendChild(commentPara);
+    }
+
+    // Footer with icons
     const footer = document.createElement("div");
-    footer.className = "social-card-footer";
+    footer.className = "social-card-footer d-flex justify-content-between align-items-center px-3 pb-2";
 
+    // Trash icon (left)
     const trash = document.createElement("i");
-    trash.className = "bi bi-trash";
+    trash.className = "bi bi-trash text-danger";
     trash.style.cursor = "pointer";
+    trash.title = "Ta bort"
     trash.addEventListener("click", () => deletePost(index));
-
-    const heart = document.createElement("i");
-    heart.className = post.favorited ? "bi bi-heart-fill" : "bi bi-heart";
-    heart.style.cursor = "pointer";
-    heart.addEventListener("click", () => toggleFavorite(index));
-
     footer.appendChild(trash);
-    footer.appendChild(heart);
-    card.appendChild(footer);
 
+    // Comment icon (middle)
+    const commentBtn = document.createElement("button");
+    commentBtn.className = "btn btn-link btn-sm text-primary p-0";
+    commentBtn.textContent = "💬";
+    commentBtn.title = "Kommentera";
+    commentBtn.addEventListener("click", () => {
+      currentCommentIndex = index;
+      const modal = new bootstrap.Modal(document.getElementById("commentModal"));
+      modal.show();
+    });
+    footer.appendChild(commentBtn);
+
+    // Heart/save icon (right)
+    const heart = document.createElement("i");
+    heart.className = post.favorited ? "bi bi-heart-fill text-danger" : "bi bi-heart"; 
+    heart.style.cursor = "pointer";
+    heart.title = post.favorited ? "Ta bort från favoriter" : "Spara som favorit"; //Changes title for "hover"
+    heart.addEventListener("click", () => toggleFavorite(index));
+    footer.appendChild(heart);
+
+    card.appendChild(footer);
     container.prepend(card);
   });
 }
+
+//From modal
+document.getElementById("saveCommentBtn").addEventListener("click", () => {
+  const commentInput = document.getElementById("commentInput");
+  const commentText = commentInput.value.trim();
+
+  if (commentText.length > 25) {
+    showToast("Kommentaren får max vara 25 tecken.", "warning");
+    return;
+  }
+
+  if (commentText && currentCommentIndex !== null) {
+    const posts = getInstagramList();
+    posts[currentCommentIndex].comment = commentText;
+    saveInstagramList(posts);
+    renderInstagramList();
+    currentCommentIndex = null;
+    commentInput.value = "";
+    const modal = bootstrap.Modal.getInstance(document.getElementById("commentModal"));
+    modal.hide();
+    showToast("Kommentar sparad!", "success");
+  }
+});

@@ -1,3 +1,5 @@
+
+// Basic list with "Instagram" posts
 export const instagramData = [
   {
     imageUrl: "images/instagram1.jpeg",

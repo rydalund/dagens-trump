@@ -78,10 +78,7 @@
             <div class="hero-logo-container">
               <img src="images/logo.svg" class="hero-logo" />
             </div>
-            <p>
-              Det senaste om Donald Trump - mannen som (tyvärr) påverkar oss
-              allla...
-            </p>
+            <p>Det senaste om Donald Trump - mannen som (tyvärr) påverkar oss allla...</p>
           </section>
           <div class="create-button-container">
             <button id="createFakeNewsBtn">
@@ -112,9 +109,8 @@
                       <i class="bi bi-chevron-right"></i>
                     </button>
 
-                    <!-- Container for Instagram (created with JS) -->
+                    <!-- Container for Instagram (created with JS) - will later be real Instagram -->
                     <div class="social-container" id="instagramContainer">
-                      <!-- Will be dynamic created with JS (now placeholders) -->
                     </div>
                   </div>
                 </div>
@@ -183,5 +179,25 @@
         </div>
       </div>
     </footer>
+
+    <!-- For Instagram comment modal -->
+    <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="commentModalLabel">Lägg till kommentar</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Stäng"></button>
+          </div>
+          <div class="modal-body">
+            <textarea id="commentInput" class="form-control" rows="3" maxlength="160" placeholder="Skriv din kommentar här..."></textarea>
+            <small class="text-muted">Max 25 tecken</small>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Avbryt</button>
+            <button type="button" class="btn btn-primary" id="saveCommentBtn">Spara kommentar</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

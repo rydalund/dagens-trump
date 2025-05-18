@@ -53,6 +53,16 @@
   padding: 0.75rem 1rem;
 }
 
+.social-card-footer {
+  border-top: 1px solid #eaeaea;
+  margin-top: auto;
+}
+
+.btn-link {
+  font-size: 1.3em;
+  text-decoration: none;
+}
+
 .post-title {
   font-size: 1rem;
   font-weight: bold;

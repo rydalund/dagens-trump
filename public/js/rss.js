@@ -1,3 +1,4 @@
+// Main method for getting rss-feed (used in main.js)
 export function fetchAndDisplayRss(rssUrl, containerId, keyword) {
   const proxyUrl =
     "https://api.allorigins.win/raw?url=" + encodeURIComponent(rssUrl);

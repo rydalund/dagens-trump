@@ -64,6 +64,7 @@ export function initFakeNewsForm() {
   });
 }
 
+// Generate image from title with pollinations.ai
 function imageGenerate(title, content) {
   showLoading();
 
@@ -99,7 +100,7 @@ function imageGenerate(title, content) {
       hideLoading();
     });
 }
-
+// Uplode image from computer, size will be reduced for localStorage (later on server)
 function imageUploadMethod(title, content) {
   const imageUpload = document.querySelector("#imageUpload");
   const imageFile = imageUpload.files[0];
@@ -121,7 +122,7 @@ function imageUploadMethod(title, content) {
   });
 }
 
-
+// Search images on title from Wikipedia (didn´t find anything better without API keys)
 function imageSearch(title, content) {
   showLoading(); // Shows loading.gif
 
@@ -201,6 +202,7 @@ function fetchImagesFromWikipediaPage(lang, pageTitle) {
     });
 }
 
+// For saving to localStorage
 function convertImageToBase64(imageUrl) {
   return fetch(imageUrl)
     .then(res => res.blob())
@@ -212,6 +214,7 @@ function convertImageToBase64(imageUrl) {
     }));
 }
 
+// Reduce image to smaller size
 function compressImage(file, scale, callback) {
   const reader = new FileReader();
   reader.onload = (e) => {

@@ -1,3 +1,4 @@
+//For date
 export function displayCurrentDate() {
   const dateElement = document.getElementById('current-date');
   const today = new Date();
