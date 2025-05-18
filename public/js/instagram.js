@@ -1,6 +1,7 @@
 import { addPost } from "./localStorage.js";
 import { showLoading, hideLoading} from "./dom.js";
 
+//Form for creating your own "fake news". Will in the future save to Instagram or a database for multiple users 
 export function initFakeNewsForm() { 
   const button = document.getElementById("createFakeNewsBtn");
 

@@ -1,3 +1,5 @@
+let favorites = []; 
+
 //For date
 export function displayCurrentDate() {
   const dateElement = document.getElementById('current-date');

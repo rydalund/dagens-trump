@@ -19,6 +19,15 @@
   <div aria-live="polite" aria-atomic="true" class="position-relative">
     <div id="toastContainer" class="toast-container position-fixed top-0 end-0 p-3"></div>
   </div>
+
+  <!-- Offcanvas - For saved Instagram posts -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="favoritesCanvas" aria-labelledby="favoritesCanvasLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="favoritesCanvasLabel">Sparade Instagram-inlägg:</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Stäng"></button>
+    </div>
+    <div class="offcanvas-body" id="favoritesList"></div>
+  </div>
  
   <body>
     <header id="main-header" class="bg-dark text-white py-3">
@@ -27,15 +36,11 @@
           <div class="d-flex align-items-center mb-2 mb-md-0">
             <h1 class="header-title mb-0">DAGENS TRUMP</h1>
           </div>
-          <form class="d-flex mt-2 mt-md-0" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Sök innehåll..."
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-light" type="submit">Sök</button>
-          </form>
+          <div>
+            <button id="toggleFavoritesBtn" class="favorite-toggle" title="Visa favoriter">
+              <i class="bi bi-heart-fill"></i>
+            </button>
+          </div>
         </div>
       </div>
     </header>
@@ -81,10 +86,7 @@
             <p>Det senaste om Donald Trump - mannen som (tyvärr) påverkar oss allla...</p>
           </section>
           <div class="create-button-container">
-            <button id="createFakeNewsBtn">
-              Skapa <span class="fake-text">(fake)</span> Instagram-inlägg
-              🗽🤠🤯
-            </button>
+            <button id="createFakeNewsBtn">Skapa <span class="fake-text">(fake)</span> Instagram-inlägg 🗽🤠🤯</button>
           </div>
 
           <!-- Shows when waiting for content -->
@@ -149,9 +151,9 @@
                   <div class="news-list" id="bbc-news"></div>
                 </div>
 
-                <div class="col-md-4" id="nyt">
+                <div class="col-md-4" id="washingtontimes">
                   <h3><i class="bi bi-newspaper"></i> W.T.</h3>
-                  <div class="news-list" id="nyt-news"></div>
+                  <div class="news-list" id="washingtontimes-news"></div>
                 </div>
               </section>
             </div>
@@ -189,7 +191,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Stäng"></button>
           </div>
           <div class="modal-body">
-            <textarea id="commentInput" class="form-control" rows="3" maxlength="160" placeholder="Skriv din kommentar här..."></textarea>
+            <textarea id="commentInput" class="form-control" rows="3" maxlength="26" placeholder="Skriv din kommentar här..."></textarea>
             <small class="text-muted">Max 25 tecken</small>
           </div>
           <div class="modal-footer">

@@ -18,6 +18,23 @@ html {
   border-radius: 8px;
 }
 
+.favorite-toggle {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.favorite-toggle i {
+  font-size: 1.75rem; 
+  color: #dc3545; 
+  transition: color 0.2s ease;
+}
+
+.favorite-toggle i:hover {
+  color: white;
+}
+
 body {
   font-family: "Roboto Mono", monospace;
   display: flex;
@@ -154,7 +171,7 @@ nav.navbar-light {
 }
 
 #al-jazeera,
-#nyt,
+#washingtontimes,
 #bbc {
   min-height: 200px;
 }

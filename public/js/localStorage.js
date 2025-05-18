@@ -60,13 +60,14 @@ export function renderInstagramList() {
   const container = document.getElementById("instagramContainer");
   container.innerHTML = "";
 
-  const posts = getInstagramList();
+  const posts = getInstagramList(); // From localStorage
+  const favorites = []; // List for favorites
 
   posts.forEach((post, index) => {
     const card = document.createElement("div");
     card.className = "social-card";
 
-    // Image
+    // Img
     const image = new Image();
     image.src = post.imageUrl;
     image.alt = post.title;
@@ -74,7 +75,7 @@ export function renderInstagramList() {
     image.classList.add("img-fluid");
     card.appendChild(image);
 
-    // Content
+    // Content, username till in the future perhaps be user on this site?... 
     const body = document.createElement("div");
     body.className = "social-card-body";
     body.innerHTML = `
@@ -100,11 +101,11 @@ export function renderInstagramList() {
     const trash = document.createElement("i");
     trash.className = "bi bi-trash text-danger";
     trash.style.cursor = "pointer";
-    trash.title = "Ta bort"
+    trash.title = "Ta bort";
     trash.addEventListener("click", () => deletePost(index));
     footer.appendChild(trash);
 
-    // Comment icon (middle)
+    // Comment icon (in the middle)
     const commentBtn = document.createElement("button");
     commentBtn.className = "btn btn-link btn-sm text-primary p-0";
     commentBtn.textContent = "💬";
@@ -116,25 +117,31 @@ export function renderInstagramList() {
     });
     footer.appendChild(commentBtn);
 
-    // Heart/save icon (right)
+    // Heart/save-icon (right)
     const heart = document.createElement("i");
-    heart.className = post.favorited ? "bi bi-heart-fill text-danger" : "bi bi-heart"; 
+    heart.className = post.favorited ? "bi bi-heart-fill text-danger" : "bi bi-heart";
     heart.style.cursor = "pointer";
-    heart.title = post.favorited ? "Ta bort från favoriter" : "Spara som favorit"; //Changes title for "hover"
+    heart.title = post.favorited ? "Ta bort från favoriter" : "Spara som favorit";
     heart.addEventListener("click", () => toggleFavorite(index));
     footer.appendChild(heart);
+
+    // If post is favorited - add to favorites list
+    if (post.favorited) {
+      favorites.push(post);
+    }
 
     card.appendChild(footer);
     container.prepend(card);
   });
-}
 
+  return favorites; // Return list with favorites
+}
 //From modal
 document.getElementById("saveCommentBtn").addEventListener("click", () => {
   const commentInput = document.getElementById("commentInput");
   const commentText = commentInput.value.trim();
 
-  if (commentText.length > 25) {
+  if (commentText.length > 26) {
     showToast("Kommentaren får max vara 25 tecken.", "warning");
     return;
   }
@@ -151,3 +158,64 @@ document.getElementById("saveCommentBtn").addEventListener("click", () => {
     showToast("Kommentar sparad!", "success");
   }
 });
+
+// Toogle favorites
+document.getElementById("toggleFavoritesBtn").addEventListener("click", () => {
+
+  // Get favorites with renderInstagramList()
+  const favorites = renderInstagramList().filter(post => post.favorited);
+
+  // show favorites in Offcanvas
+  renderFavoritesToCanvas(favorites);
+
+  // Show Offcanvas
+  const offcanvas = new bootstrap.Offcanvas(document.getElementById("favoritesCanvas"));
+  offcanvas.show();
+});
+
+// Rendering saved/liked/favorites for Offcanvas
+function renderFavoritesToCanvas(favorites) {
+  const favoritesList = document.getElementById("favoritesList"); // in index.html
+  favoritesList.innerHTML = ""; // Clear old Offcanvas
+
+  if (favorites.length === 0) {
+    favoritesList.innerHTML = "<p>Inga favoriter hittades.</p>"; // If no favorites are present
+  } else {
+    favorites.forEach((favorite, index) => {
+      const favoriteCard = document.createElement("div");
+      favoriteCard.className = "social-card";
+      
+      // Some styling
+      favoriteCard.style.borderBottom = "1px solid #ddd"; 
+      favoriteCard.style.margin = "1em"; 
+
+      const image = new Image();
+      image.src = favorite.imageUrl;
+      image.alt = favorite.title;
+      image.classList.add("img-fluid");
+      favoriteCard.appendChild(image);
+
+      // Will perhaps be different in the future
+      const body = document.createElement("div");
+      body.className = "social-card-body";
+      body.innerHTML = `
+        <p class="post-username">@realDonaldTrump</p>
+        <p class="post-tags">${favorite.title}</p>
+        <p class="text-muted small">${favorite.content}</p>
+      `;
+      favoriteCard.appendChild(body);
+
+      // Shows comments here also
+      if (favorite.comment) {
+        const commentPara = document.createElement("p");
+        commentPara.className = "comment-text text-muted small fst-italic mb-2";
+        commentPara.textContent = `"${favorite.comment}"`;
+        favoriteCard.appendChild(commentPara);
+      }
+
+
+
+      favoritesList.appendChild(favoriteCard); // Adds every favorite
+    });
+  }
+}
