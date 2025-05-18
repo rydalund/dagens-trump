@@ -1,211 +1,266 @@
 <!DOCTYPE html>
 <html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DAGENS TRUMP</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"/>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/social-sections.css" />
+    <link rel="stylesheet" href="css/truth-social.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script type="module" src="js/main.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DAGENS TRUMP</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/social-sections.css" />
-  <link rel="stylesheet" href="css/truth-social.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
-  <script type="module" src="js/main.js"></script>
-</head>
-
-<body>
-  <header id="main-header" class="bg-dark text-white py-3">
-    <div class="container">
-      <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
-        <div class="d-flex align-items-center mb-2 mb-md-0">
-          <h1 class="header-title mb-0">DAGENS TRUMP</h1>
-        </div>
-        <form class="d-flex mt-2 mt-md-0" role="search">
-          <input class="form-control me-2" type="search" placeholder="Sök innehåll..." aria-label="Search" />
-          <button class="btn btn-outline-light" type="submit">Sök</button>
-        </form>
-      </div>
-    </div>
-  </header>
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Startsida</a>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="#">Memes</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Nyheter</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Om oss</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Kontakt</a></li>
-        </ul>
-      </div>
-
-      <!-- Date -->
-      <span id="current-date" class="ms-auto navbar-text text-muted small"></span>
-    </div>
-  </nav>
-
-  <main>
-    <div class="container">
-      <div class="content-wrapper">
-        <section class="hero-section text-center mb-5">
-          <h1 class="welcome-text">Välkommen till</h1>
-          <div class="hero-logo-container">
-            <img src="images/logo.svg" class="hero-logo" />
+  <!-- Toast -->
+  <div aria-live="polite" aria-atomic="true" class="position-relative">
+    <div id="toastContainer" class="toast-container position-fixed top-0 end-0 p-3"></div>
+  </div>
+ 
+  <body>
+    <header id="main-header" class="bg-dark text-white py-3">
+      <div class="container">
+        <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+          <div class="d-flex align-items-center mb-2 mb-md-0">
+            <h1 class="header-title mb-0">DAGENS TRUMP</h1>
           </div>
-          <p>Det senaste om Donald Trump - mannen som (tyvärr) påverkar oss allla...</p>
-        </section>
-
-        <div class="row">
-          <!-- 2/3 of width -->
-          <div class="col-lg-8 col-md-7">
-            <section class="social-feed instagram-feed mb-5">
-              <div class="container">
-                <h2 class="section-title">Senaste #trump på Instagram</h2>
-
-                <!-- Wrapper for slides / buttons -->
-                <div class="slider-wrapper position-relative">
-
-                  <!-- Scroll-buttons -->
-                  <button class="social-nav instagram-prev">
-                    <i class="bi bi-chevron-left"></i>
-                  </button>
-                  <button class="social-nav instagram-next">
-                    <i class="bi bi-chevron-right"></i>
-                  </button>
-
-                  <!-- Container for Instagram (created with JS) -->
-                  <div class="social-container" id="instagramContainer">
-                    <!-- Will be dynamic created with JS (now placeholders) -->
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <section class="social-feed youtube-feed mb-5">
-              <div class="container">
-                <h2 class="section-title">Senaste #Trump YouTube-klippen</h2>
-
-                <!-- Wrapper for slides / buttons -->
-                <div class="slider-wrapper position-relative">
-                  <button class="social-nav youtube-prev">
-                    <i class="bi bi-chevron-left"></i>
-                  </button>
-                  <button class="social-nav youtube-next">
-                    <i class="bi bi-chevron-right"></i>
-                  </button>
-
-                  <!-- Container for YouTube (created with JS) -->
-                  <div class="social-container" id="youtubeContainer">
-                    <!-- Will be dynamic created with JS (now placeholders) -->
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            <!-- RSS dynamic via JavaScript -->
-            <section class="news-section row">
-
-              <div class="col-md-4" id="al-jazeera">
-                <h3><i class="bi bi-tv"></i> Al Jazeera</h3>
-                <div class="news-list" id="al-jazeera-news" >
-                </div>
-              </div>
-
-              <div class="col-md-4" id="bbc">
-                <h3><i class="bi bi-broadcast"></i> BBC</h3>
-                <div class="news-list" id="bbc-news">
-                </div>
-              </div>
-
-              <div class="col-md-4" id="nyt">
-                <h3><i class="bi bi-newspaper"></i> N.Y.T.</h3>
-                <div class="news-list" id="nyt-news">
-                </div>
-              </div>
-            </section>
-          </div>
-
-          <!-- Truth Social: 1/3 of width -->
-          <div class="col-lg-4 col-md-5">
-            <aside class="truth-feed">
-              <a href="https://truthsocial.com/@realDonaldTrump" target="_blank"
-                class="d-block text-center text-dark text-decoration-none">
-                <h2>@realDonaldTrump/Truth Social</h2>
-              </a>
-              <!-- Will later be dynamic from API or web scraping -->
-              <a href="https://truthsocial.com/@realDonaldTrump/posts/1234567890" class="truth-post-link">
-                <div class="truth-post">
-                  <div class="truth-header">
-                    <img src="images/trump-profile.png" alt="Trump profile" class="truth-avatar" />
-                    <div>
-                      <strong>Donald J. Trump</strong><br />
-                      <span class="truth-handle">@realDonaldTrump • Apr 13, 2025</span>
-                    </div>
-                  </div>
-                  <p>
-                    NOBODY is getting “off the hook” for the unfair Trade Balances, and Non Monetary Tariff Barriers,
-                    that other Countries have used against us,
-                    especially not China which, by far, treats us the worst! There was no Tariff “exception” announced
-                    on Friday.
-                    These products are subject to the existing 20% Fentanyl Tariffs, and they are just moving to a
-                    different Tariff “bucket.” The Fake News knows this,
-                    but refuses to report it. We are taking a look at Semiconductors and the WHOLE ELECTRONICS SUPPLY
-                    CHAIN in the upcoming National Security Tariff Investigations.
-                    What has been exposed is that we need to make products in the United States, and that we will not be
-                    held hostage by other Countries, especially hostile trading
-                    Nations like China, which will do everything within its power to disrespect the American People. We
-                    also cannot let them continue to abuse us on Trade, like they
-                    have for decades, THOSE DAYS ARE OVER! The Golden Age of America, which includes the upcoming Tax
-                    and Regulation Cuts, a substantial amount of which was just
-                    approved by the House and Senate, will mean more and better paying Jobs, making products in our
-                    Nation, and treating other Countries, in particular China, the
-                    same way they have treated us. The bottom line is that our Country will be bigger, better, and
-                    stronger than ever before. We will, MAKE AMERICA GREAT AGAIN!
-                  </p>
-                </div>
-              </a>
-              <a href="https://truthsocial.com/@realDonaldTrump/posts/114319592702753512" class="truth-post-link">
-                <div class="truth-post">
-                  <div class="truth-header">
-                    <img src="images/trump-profile.png" alt="Trump profile" class="truth-avatar" />
-                    <div>
-                      <strong>Donald J. Trump</strong><br />
-                      <span class="truth-handle">@realDonaldTrump • Apr 11, 2025</span>
-                    </div>
-                  </div>
-                  <p>
-                    Russia has to get moving. Too many people ere DYING, thousands a week, in a terrible and senseless
-                    war -
-                    A war that should have never happened, and wouldn’t have happened, if I were President!!!
-                  </p>
-                </div>
-              </a>
-            </aside>
-          </div>
+          <form class="d-flex mt-2 mt-md-0" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Sök innehåll..."
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-light" type="submit">Sök</button>
+          </form>
         </div>
       </div>
-    </div>
-  </main>
+    </header>
 
-  <!-- Footer -->
-  <footer class="bg-dark text-white py-4">
-    <div class="container text-center">
-      <p>All Rights Reserved © 2025 - DAGENS TRUMP</p>
-      <div>
-        <a href="#" class="text-white me-3">Facebook</a>
-        <a href="#" class="text-white me-3">Twitter</a>
-        <a href="#" class="text-white">Instagram</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Startsida</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Memes</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Nyheter</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Om oss</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <!-- Date -->
+        <span
+          id="current-date"
+          class="ms-auto navbar-text text-muted small"
+        ></span>
       </div>
-    </div>
-  </footer>
-</body>
+    </nav>
+
+    <main>
+      <div class="container">
+        <div class="content-wrapper">
+          <section class="hero-section text-center mb-5">
+            <h1 class="welcome-text">Välkommen till</h1>
+            <div class="hero-logo-container">
+              <img src="images/logo.svg" class="hero-logo" />
+            </div>
+            <p>
+              Det senaste om Donald Trump - mannen som (tyvärr) påverkar oss
+              allla...
+            </p>
+          </section>
+          <div class="create-button-container">
+            <button id="createFakeNewsBtn">
+              Skapa <span class="fake-text">(fake)</span> Instagram-inlägg
+              🗽🤠🤯
+            </button>
+          </div>
+
+          <!-- Shows when waiting for content -->
+          <div id="loadingSpinner" >
+            <img src="images/loading.gif" alt="Laddar..." />
+          </div>
+
+          <div class="row">
+            <!-- 2/3 of width -->
+            <div class="col-lg-8 col-md-7">
+              <section class="social-feed instagram-feed mb-5">
+                <div class="container">
+                  <h2 class="section-title">Senaste #trump på Instagram</h2>
+
+                  <!-- Wrapper for slides / buttons -->
+                  <div class="slider-wrapper position-relative">
+                    <!-- Scroll-buttons -->
+                    <button class="social-nav instagram-prev">
+                      <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <button class="social-nav instagram-next">
+                      <i class="bi bi-chevron-right"></i>
+                    </button>
+
+                    <!-- Container for Instagram (created with JS) -->
+                    <div class="social-container" id="instagramContainer">
+                      <!-- Will be dynamic created with JS (now placeholders) -->
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="social-feed youtube-feed mb-5">
+                <div class="container">
+                  <h2 class="section-title">Senaste #Trump YouTube-klippen</h2>
+
+                  <!-- Wrapper for slides / buttons -->
+                  <div class="slider-wrapper position-relative">
+                    <button class="social-nav youtube-prev">
+                      <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <button class="social-nav youtube-next">
+                      <i class="bi bi-chevron-right"></i>
+                    </button>
+
+                    <!-- Container for YouTube (created with JS) -->
+                    <div class="social-container" id="youtubeContainer">
+                      <!-- Will be dynamic created with JS (now placeholders) -->
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- RSS dynamic via JavaScript -->
+              <section class="news-section row">
+                <div class="col-md-4" id="al-jazeera">
+                  <h3><i class="bi bi-tv"></i> Al Jazeera</h3>
+                  <div class="news-list" id="al-jazeera-news"></div>
+                </div>
+
+                <div class="col-md-4" id="bbc">
+                  <h3><i class="bi bi-broadcast"></i> BBC</h3>
+                  <div class="news-list" id="bbc-news"></div>
+                </div>
+
+                <div class="col-md-4" id="nyt">
+                  <h3><i class="bi bi-newspaper"></i> W.T.</h3>
+                  <div class="news-list" id="nyt-news"></div>
+                </div>
+              </section>
+            </div>
+
+            <!-- Truth Social: 1/3 of width -->
+            <div class="col-lg-4 col-md-5">
+              <aside class="truth-feed">
+                <a
+                  href="https://truthsocial.com/@realDonaldTrump"
+                  target="_blank"
+                  class="d-block text-center text-dark text-decoration-none"
+                >
+                  <h2>@realDonaldTrump/Truth Social</h2>
+                </a>
+                <!-- Will later be dynamic from API or web scraping -->
+                <a
+                  href="https://truthsocial.com/@realDonaldTrump/posts/1234567890"
+                  class="truth-post-link"
+                >
+                  <div class="truth-post">
+                    <div class="truth-header">
+                      <img
+                        src="images/trump-profile.png"
+                        alt="Trump profile"
+                        class="truth-avatar"
+                      />
+                      <div>
+                        <strong>Donald J. Trump</strong><br />
+                        <span class="truth-handle"
+                          >@realDonaldTrump • Apr 13, 2025</span
+                        >
+                      </div>
+                    </div>
+                    <p>
+                      NOBODY is getting “off the hook” for the unfair Trade
+                      Balances, and Non Monetary Tariff Barriers, that other
+                      Countries have used against us, especially not China
+                      which, by far, treats us the worst! There was no Tariff
+                      “exception” announced on Friday. These products are
+                      subject to the existing 20% Fentanyl Tariffs, and they are
+                      just moving to a different Tariff “bucket.” The Fake News
+                      knows this, but refuses to report it. We are taking a look
+                      at Semiconductors and the WHOLE ELECTRONICS SUPPLY CHAIN
+                      in the upcoming National Security Tariff Investigations.
+                      What has been exposed is that we need to make products in
+                      the United States, and that we will not be held hostage by
+                      other Countries, especially hostile trading Nations like
+                      China, which will do everything within its power to
+                      disrespect the American People. We also cannot let them
+                      continue to abuse us on Trade, like they have for decades,
+                      THOSE DAYS ARE OVER! The Golden Age of America, which
+                      includes the upcoming Tax and Regulation Cuts, a
+                      substantial amount of which was just approved by the House
+                      and Senate, will mean more and better paying Jobs, making
+                      products in our Nation, and treating other Countries, in
+                      particular China, the same way they have treated us. The
+                      bottom line is that our Country will be bigger, better,
+                      and stronger than ever before. We will, MAKE AMERICA GREAT
+                      AGAIN!
+                    </p>
+                  </div>
+                </a>
+                <a
+                  href="https://truthsocial.com/@realDonaldTrump/posts/114319592702753512"
+                  class="truth-post-link"
+                >
+                  <div class="truth-post">
+                    <div class="truth-header">
+                      <img
+                        src="images/trump-profile.png"
+                        alt="Trump profile"
+                        class="truth-avatar"
+                      />
+                      <div>
+                        <strong>Donald J. Trump</strong><br />
+                        <span class="truth-handle"
+                          >@realDonaldTrump • Apr 11, 2025</span
+                        >
+                      </div>
+                    </div>
+                    <p>
+                      Russia has to get moving. Too many people ere DYING,
+                      thousands a week, in a terrible and senseless war - A war
+                      that should have never happened, and wouldn’t have
+                      happened, if I were President!!!
+                    </p>
+                  </div>
+                </a>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+      <div class="container text-center">
+        <p>All Rights Reserved © 2025 - DAGENS TRUMP</p>
+        <div>
+          <a href="#" class="text-white me-3">Facebook</a>
+          <a href="#" class="text-white me-3">Twitter</a>
+          <a href="#" class="text-white">Instagram</a>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
