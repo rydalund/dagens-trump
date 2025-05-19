@@ -6,30 +6,35 @@ export const instagramData = [
     title: "#trump",
     content: "This is awesome!!!",
     favorited: false,
+    date: "2025-01-01"
   },
   {
     imageUrl: "images/instagram2.jpeg",
     title: "#2024Election",
     content: "DonaldTrump",
     favorited: false,
+    date: "2025-02-02"
   },
   {
     imageUrl: "images/instagram3.jpeg",
     title: "#trump #usa",
     content: "Happy Americans.",
     favorited: false,
+    date: "2025-03-03"
   },
   {
     imageUrl: "images/instagram4.jpeg",
     title: "#BoycottTrump #BoycottUS",
     content: "Finally! U.S.A",
     favorited: false,
+    date: "2025-04-04"
   },
   {
     imageUrl: "images/instagram5.jpeg",
     title: "#NarendraModi #Trump",
     content: "India + U.S.A. = true",
     favorited: false,
+    date: "2025-05-05"
   },
 ];
 

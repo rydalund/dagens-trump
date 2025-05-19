@@ -1,5 +1,5 @@
 import { instagramData } from "./feed.js"; //Basic Instagram-posts (will later be real posts)
-import { showToast } from "./dom.js";
+import { showToast, setupScrollButtons } from "./dom.js";
 
 let currentCommentIndex = null; //For keeping track of comments
 
@@ -82,6 +82,7 @@ export function renderInstagramList() {
       <p class="post-username">@realDonaldTrump</p>
       <p class="post-tags">${post.title}</p>
       <p class="text-muted small">${post.content}</p>
+      <p class="text-muted small fst-italic">${post.date || "Datum saknas"}</p>
     `;
     card.appendChild(body);
 
@@ -133,7 +134,8 @@ export function renderInstagramList() {
     card.appendChild(footer);
     container.prepend(card);
   });
-
+  //Runs setup on scroll buttons go get different buttons at end of list (right/left)
+  setupScrollButtons("instagramContainer", document.querySelector(".instagram-prev"), document.querySelector(".instagram-next"));
   return favorites; // Return list with favorites
 }
 //From modal
@@ -175,17 +177,15 @@ document.getElementById("toggleFavoritesBtn").addEventListener("click", () => {
 
 // Rendering saved/liked/favorites for Offcanvas
 function renderFavoritesToCanvas(favorites) {
-  const favoritesList = document.getElementById("favoritesList"); // in index.html
-  favoritesList.innerHTML = ""; // Clear old Offcanvas
+  const favoritesList = document.getElementById("favoritesList");
+  favoritesList.innerHTML = "";
 
   if (favorites.length === 0) {
-    favoritesList.innerHTML = "<p>Inga favoriter hittades.</p>"; // If no favorites are present
+    favoritesList.innerHTML = "<p>Inga favoriter hittades.</p>";
   } else {
     favorites.forEach((favorite, index) => {
       const favoriteCard = document.createElement("div");
       favoriteCard.className = "social-card";
-      
-      // Some styling
       favoriteCard.style.borderBottom = "1px solid #ddd"; 
       favoriteCard.style.margin = "1em"; 
 
@@ -195,17 +195,16 @@ function renderFavoritesToCanvas(favorites) {
       image.classList.add("img-fluid");
       favoriteCard.appendChild(image);
 
-      // Will perhaps be different in the future
       const body = document.createElement("div");
       body.className = "social-card-body";
       body.innerHTML = `
         <p class="post-username">@realDonaldTrump</p>
         <p class="post-tags">${favorite.title}</p>
         <p class="text-muted small">${favorite.content}</p>
+        <p class="text-muted small fst-italic">${favorite.date || "Datum saknas"}</p>
       `;
       favoriteCard.appendChild(body);
 
-      // Shows comments here also
       if (favorite.comment) {
         const commentPara = document.createElement("p");
         commentPara.className = "comment-text text-muted small fst-italic mb-2";
@@ -213,9 +212,7 @@ function renderFavoritesToCanvas(favorites) {
         favoriteCard.appendChild(commentPara);
       }
 
-
-
-      favoritesList.appendChild(favoriteCard); // Adds every favorite
+      favoritesList.appendChild(favoriteCard);
     });
   }
 }

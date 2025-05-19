@@ -82,7 +82,8 @@ function imageGenerate(title, content) {
           imageUrl: base64data,
           title,
           content,
-          favorited: false
+          favorited: false,
+          date: new Date().toLocaleDateString("sv-SE")
         };
 
         addPost(post);
@@ -95,7 +96,8 @@ function imageGenerate(title, content) {
         imageUrl: "images/trump-profile.png",
         title,
         content,
-        favorited: false
+        favorited: false,
+        date: new Date().toLocaleDateString("sv-SE")
       };
       addPost(fallbackPost);
       hideLoading();
@@ -117,7 +119,8 @@ function imageUploadMethod(title, content) {
       imageUrl: compressedBase64,
       title,
       content,
-      favorited: false
+      favorited: false,
+      date: new Date().toLocaleDateString("sv-SE")
     };
     addPost(post); 
   });
@@ -135,7 +138,8 @@ function imageSearch(title, content) {
         imageUrl: base64data,
         title,
         content,
-        favorited: false
+        favorited: false,
+        date: new Date().toLocaleDateString("sv-SE")
       };
       addPost(post);
       hideLoading(); // Hide loading.gif
@@ -149,7 +153,8 @@ function imageSearch(title, content) {
             imageUrl: base64data,
             title,
             content,
-            favorited: false
+            favorited: false,
+            date: new Date().toLocaleDateString("sv-SE")
           };
           addPost(post);
           hideLoading();
@@ -159,7 +164,8 @@ function imageSearch(title, content) {
             imageUrl: "images/trump-profile.png",
             title,
             content,
-            favorited: false
+            favorited: false,
+            date: new Date().toLocaleDateString("sv-SE")
           };
           addPost(fallbackPost);
           hideLoading();

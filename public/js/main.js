@@ -12,8 +12,8 @@ initLocalStorage();
 renderInstagramList()
 initYoutubeFeed(); // Will later be real feed if we continue to work on this project
 initTruthFeed(); // Will later be real feed if we continue to work on this project
-setupScrollButtons("instagramContainer", document.querySelector(".instagram-prev"), document.querySelector(".instagram-next"));
-setupScrollButtons("youtubeContainer", document.querySelector(".youtube-prev"), document.querySelector(".youtube-next"));
+
+setupScrollButtons("youtubeContainer", document.querySelector(".youtube-prev"), document.querySelector(".youtube-next")); //Will later be moved to new js-file for youtube
 
 document.addEventListener("DOMContentLoaded", () => {
   const fakeNewsBtn = document.getElementById("createFakeNewsBtn");
